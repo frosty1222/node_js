@@ -1,0 +1,5 @@
++ install nodemon by this command line" npm install nodemon
++install morgan by this command line" npm install morgan"
++install express-handlebars by this command line" npm install express-handlebars"
+=>read more documents to understand more about this plugin
++install scss by this command line" npm install node-scss"
