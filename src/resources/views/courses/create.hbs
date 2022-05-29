@@ -1,0 +1,23 @@
+<div class="mt-4">
+    <h3>Create New Dish</h3>
+    <form method="post" action="/courses/store" enctype="multipart/form-data">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" name="name" placeholder="Enter Dish's name">
+  </div>
+  <div class="form-group">
+    <label for="description">Description</label>
+    <input type="text" class="form-control" name="description" placeholder="Enter Dish's description">
+  </div>
+  <div class="form-group"> 
+    <label>Image</label>
+    <input type="file" name="image" class="form-control" placeholder="Enter image..." accept="image/*">
+  </div>
+  <div class="form-group">
+    <label for="Slug">Slug</label>
+    <input type="text" class="form-control" name="slug" placeholder="Enter Dish's Slug">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+

@@ -1,13 +1,21 @@
-h1 {
-  background-color: #fff;
-  color: #333;
+.card-course-item {
+  margin-top: 16px;
+  text-align: center;
+  height: 350px;
 }
 
-* {
-  font-family: "Courier New", Courier, monospace;
-  text-align: justify;
-  box-sizing: border-box;
-  color: greenyellow;
-  font-style: normal;
-  font-weight: normal;
+.appear-img {
+  width: 100%;
+}
+
+.appear-img img {
+  width: 100%;
+}
+
+.main-appear {
+  width: 100%;
+}
+
+.home {
+  margin-bottom: 50px;
 }

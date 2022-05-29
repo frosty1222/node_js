@@ -2,4 +2,9 @@
 +install morgan by this command line" npm install morgan"
 +install express-handlebars by this command line" npm install express-handlebars"
 =>read more documents to understand more about this plugin
-+install scss by this command line" npm install node-scss"
++install node scss by this command line" npm install node-scss"
++install scss by this command line" npm install scss"
++install npm i prettier lint-staged husky --save-dev // for formatting your codes 
++install mongoose by this command line" npm install mongoose"
++install multer for upload file in nodejs and express by this command line" npm install multer --save-dev"
++install express-flash by this command line" npm install express-flash --save-dev"
