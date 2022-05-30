@@ -6,4 +6,5 @@ router.post('/store', course_controller.store);
 router.get('/edit/:slug', course_controller.edit);
 router.post('/update/:id', course_controller.update);
 router.get('/delete/:id', course_controller.delete);
+router.get('/tablelist', course_controller.tablelist);
 module.exports = router;

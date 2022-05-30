@@ -62,6 +62,16 @@ class CourseController {
        }
    })
  }
+ tablelist(req,res,next){
+    const page = parseInt(req.query.page) || 1;
+    const perPage = 4;
+    const start =(page -1) * perPage;
+    const end = page * perPage;
+    Course.find({}).then(course=>{
+      res.render('courses/tablelist',{course:multipleMongooseToObject(course).slice(start,end),page})
+    }).catch(next);
+    
+ }
   //[POST]/courses/store
 }
 module.exports = new CourseController();

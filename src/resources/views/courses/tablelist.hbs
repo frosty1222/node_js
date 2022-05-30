@@ -2,29 +2,47 @@
     <div class="col-md-12">
         <div class="col-md-10">
             <legend>View Dish</legend>
-            <table class="table">
+            <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th>No.</th>
                         <th>Name</th>
                         <th>Description</th>
                         <th>Slug</th>
+                        <th>Price</th>
+                        <th>Sale_price</th>
                         <th>Image</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
+                    {{#each course}}
                     <tr>
                         <td scope="row">{{Sum @index 1}}</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>{{this.name}}</td>
+                        <td>{{this.description}}</td>
+                        <td>{{this.slug}}</td>
+                        <td>{{this.price}}</td>
+                        <td>{{this.sale_price}}</td>
+                        <td><img src="/uploads/{{this.image}}" alt="{{this.slug}}" width="70px" height="50px"></td>
+                        <td>
+                            <a href="/courses/edit/{{this.slug}}" class="btn btn-primary">Edit</a>
+                            <a href="/courses/delete/{{this._id}}" onclick="return confirm('Are you sure ?')" class="btn btn-danger">Delete</a>
+                        </td>
                     </tr>
+                    {{/each}}
                 </tbody>
             </table>
+            <nav aria-label="...">
+            <ul class="pagination">
+                <li class="page-item">
+                <a class="page-link" href="/courses/tablelist?page={{PrePage page}}">Previous</a>
+                </li>
+                <li class="page-item">
+                <a class="page-link" href="/courses/tablelist?page={{nextPage page}}">Next</a>
+                </li>
+            </ul>
+            </nav>
         </div>
     </div>
 </div>

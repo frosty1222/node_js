@@ -35,6 +35,9 @@ app.engine(
     extname: '.hbs',
     helpers:{
       Sum:(a,b)=>a+b,
+      Multi:(a,b)=>a*b,
+      nextPage:(a)=>a+1,
+      PrePage:(a)=>a - 1 ||1,
     }
   }),
 );
