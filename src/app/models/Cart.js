@@ -9,6 +9,6 @@ const Cart= new Schema({
     },
     slug:{type:String},
     price:{type:String},
-    quantity:{type:String},
+    quantity:{type:Number},
 },{timestamps:true,});
 module.exports = mongoose.model('Cart',Cart);

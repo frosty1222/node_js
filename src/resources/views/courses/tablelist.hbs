@@ -2,17 +2,26 @@
     <div class="col-md-12">
         <div class="col-md-10">
             <legend>View Dish</legend>
-            <table class="table table-bordered">
+            <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
                 <thead>
                     <tr>
-                        <th>No.</th>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Slug</th>
-                        <th>Price</th>
-                        <th>Sale_price</th>
-                        <th>Image</th>
-                        <th>Action</th>
+                        <th class="th-sm">No.</th>
+                        <th class="th-sm">Name
+                            <span class="oi oi-elevator"></span>
+                            <a href="?sort=asc">
+                                <span class="oi oi-sort-descending"></span>
+                            </a>
+                            <a href="?sort=desc">
+                                <span class="oi oi-sort-ascending"></span>
+                            </a>
+                        </th>
+                        <th class="th-sm">Description</th>
+                        <th class="th-sm">Slug</th>
+                        <th class="th-sm">Price
+                        </th>
+                        <th class="th-sm">Sale_price</th>
+                        <th class="th-sm">Image</th>
+                        <th class="th-sm">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -44,5 +53,13 @@
             </ul>
             </nav>
         </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+        <script>
+        $(document).ready(function () {
+        $('#dtBasicExample').DataTable();
+        $('.dataTables_length').addClass('bs-select');
+        });
+        </script>
     </div>
 </div>

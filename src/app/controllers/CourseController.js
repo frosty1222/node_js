@@ -67,10 +67,18 @@ class CourseController {
     const perPage = 4;
     const start =(page -1) * perPage;
     const end = page * perPage;
+    if(req.query.sort =='asc'){
+      Course.find({}).sort({name: 1}).then(course=>{
+      res.render('courses/tablelist',{course:multipleMongooseToObject(course).slice(start,end),page})
+      }).catch(next); 
+    }else if(req.query.sort=='desc'){
+      Course.find({}).sort({name: -1}).then(course=>{
+         res.render('courses/tablelist',{course:multipleMongooseToObject(course).slice(start,end),page})
+         }).catch(next); 
+    }
     Course.find({}).then(course=>{
       res.render('courses/tablelist',{course:multipleMongooseToObject(course).slice(start,end),page})
-    }).catch(next);
-    
+      }).catch(next); 
  }
   //[POST]/courses/store
 }

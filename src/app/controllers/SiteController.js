@@ -3,6 +3,10 @@ const {multipleMongooseToObject} = require('../../util/mongoose');
 const { mongooseToObject} = require('../../util/mongoose');
 class SiteController {
   index(req,res){
+      const page = parseInt(req.query.page) || 1;
+      const perPage = 6;
+      const start =(page -1) * perPage;
+      const end = page * perPage;
        Courses.find({}).then(courses=>{
          if(req.query.search){
            Courses.where({$or:[{name:req.query.search},{price:req.query.search}]}).then(courses=>{
@@ -12,7 +16,7 @@ class SiteController {
            })
          }else{
           res.render('home',{
-            courses:multipleMongooseToObject(courses)
+            courses:multipleMongooseToObject(courses).slice(start,end),page
            })
          }
          

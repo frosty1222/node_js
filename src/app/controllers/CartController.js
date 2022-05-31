@@ -2,6 +2,7 @@ const Course = require('../models/Course');
 const Cart = require('../models/Cart');
 const {multipleMongooseToObject} = require('../../util/mongoose');
 const {mongooseToObject} = require('../../util/mongoose');
+const { send } = require('express/lib/response');
 const quantity = 0;
 const total_quantity = 0;
 const total_price = 0;
@@ -16,34 +17,43 @@ class CartController{
            const image = cart.image;
            const slug = cart.slug;
            const price = cart.price;
-           const quantity = 1
+           const qty = 1
+           const slugUrl = req.params.slug;
            Cart.findOne({slug:req.params.slug}).then(cartValue=>{
-               if(cartValue.slug == req.params.slug){
-                   const  newQuantity = quantity +1;
-                   Cart.findOneAndUpdate({slug:req.params.slug},{quantity:newQuantity},function(err){
-                     console.log(err);
-                   })
-               }else{
+            if(cartValue.slug == req.params.slug){
+              const newQ =cartValue.quantity;
+              const  newQuantity = newQ;
+                Cart.findOneAndUpdate({slug:req.params.slug},{quantity:newQuantity +1},{new:true,upsert:true},function(err,counter){
+                 if(err){console.log(err) }
+                })
+           }
+           }).catch(
+             function(err){
+               if(err){
                 Cart.create({
-                      name:name,
-                      description:description,
-                      image:image,
-                      slug:slug,
-                      price:price,
-                      quantity:quantity,
-                  })
+                  name:name,
+                  description:description,
+                  image:image,
+                  slug:req.params.slug,
+                  price:price,
+                  quantity:qty,
+                 })
                }
+             }
+           );
            })
-       }
-        )
         .then(
             res.redirect('/carts/cartTable')
        ).catch(next)
   }
    async cartTable(req,res,next){
        try{
+        const page = parseInt(req.query.page) || 1;
+        const perPage = 5;
+        const start =(page -1) * perPage;
+        const end = page * perPage;
         Cart.find({}).then(cartValue=>{
-        res.render('carts/cartTable',{cartValue:multipleMongooseToObject(cartValue)}) 
+        res.render('carts/cartTable',{cartValue:multipleMongooseToObject(cartValue).slice(start, end),page}); 
     }).catch(next)
       }catch{
         res.send(next)
